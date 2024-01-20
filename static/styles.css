@@ -45,6 +45,16 @@ label
     margin-bottom: 5px;
 }
 
+.error
+{
+    color:red;
+}
+
+.validate
+{
+    color:green;
+}
+
 button:hover
 {
     cursor:pointer;
