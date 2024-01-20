@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+</head>
+<body>
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h1>Bienvenue sur le site</h1>
+        {% if not username %}
+            <p>Vous n'êtes pas connecté !</p>
+            <a href="http://localhost:5000/login">Connectez-vous ici</a>
+        {% else %}
+            <p>Bonjour {{ username }} !</p>
+            <a href="http://localhost:5000/out">Déconnexion</a>
+        {% endif %}
+    </div>
+</body>
+</html>
