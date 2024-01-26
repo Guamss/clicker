@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <script src="{{ url_for('static', filename= 'vue.js')}}" type="module"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
 </head>
 <body>
-    <div>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -23,8 +23,10 @@
             <a href="http://localhost:5000/login">Connectez-vous ici</a>
         {% else %}
             <p>Bonjour {{ username }} !</p>
+            <div id="app">
+                <button @click="count++"> Count : {$ count $}</button>
+            </div>
             <a href="http://localhost:5000/out">Déconnexion</a>
         {% endif %}
-    </div>
 </body>
 </html>
